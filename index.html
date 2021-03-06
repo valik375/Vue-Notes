@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<title>Product App</title>
+</head>
+<body>
+    
+    <div id="app">
+        <div class="wrapper">
+            <div class="clac-body">
+                <h1>Список задачь</h1>
+                <hr>
+                <div class="input-group">
+                    <label for="inpur">Задача</label>
+                    <input 
+                        id="input" 
+                        type="text" 
+                        placeholder="Текст задачи"
+                        @input="getValue"
+                        :value="inputValue"
+                        required
+                    >
+                </div>
+                <div class="input-group">
+                    <label >Время задачи</label>
+                    <input 
+                        type="time"
+                        @input="getTime"
+                        :value="timeValue"
+                        required
+                    >
+                </div>
+                <div class="input-group">
+                    <label >Срок задачи</label>
+                    <input 
+                        type="date"
+                        @input="getDate"
+                        :value="dateValue"
+                        required
+                    >
+                </div>
+                <button @click="createNote" class="btn" type="button"> Создать </button>
+            </div>
+
+            <div class="notes">
+                <h3>Все задачи</h3>
+                <hr>
+                <div class="note-item" v-for="(note, index) in notesList">
+                    <h3 class="note-title">{{note.value}}</h3>
+                    <h3 class="note-date">{{note.time}} {{note.date}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./app.js"></script>
+</body>
+</html>
